@@ -1,0 +1,4023 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EGlobal.TotalPosSDKNet</name>
+    </assembly>
+    <members>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Interfaz">
+            <summary>
+            Clase que realiza las petición a TotalPos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Interfaz.Instance">
+            <summary>
+            Obtiene instancia de Interfaz.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Interfaz.PinPad">
+            <summary>
+            Establece el Pin Pad que utilizará la interfaz para transaccionar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Interfaz.Configuracion">
+            <summary>
+             Configuración del componente.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Interfaz.Inicializar">
+            <summary>
+            Carga la configuración necesaria para realizar transacciones.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Interfaz.Telecarga">
+            <summary>
+            Método para realizar la telecarga manual.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion">
+            <summary>
+            Clase para manejar las peticiones a TotalPos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.Fecha">
+            <summary>
+            Indica la fecha local en la que se realiza la operación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.Amex">
+            <summary>
+            Identifica si la tarjeta de cargo es emisor American Express.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.Operador">
+            <summary>
+            Identifica operador que realiza la operación.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.#ctor">
+            <summary>
+            Crea una instacia de la clase Petición.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SetAfiliacion(System.String,EGlobal.TotalPosSDKNet.Interfaz.Catalog.Moneda)">
+            <summary>
+            Indica la afiliación que realiza la operación.
+            </summary>
+            <param name="afiliacion">Número de la afiliación del comercio.</param>
+            <param name="moneda">Moneda en que opera la afiliación.</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Mensaje de error en la validación.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SetTerminal(System.String,System.String)">
+            <summary>
+            Asigna la terminal que realiza la operación.
+            </summary>
+            <param name="numeroTerminal">Número que identifica a la terminal que realiza la trasacción.</param>
+            <param name="macTerminal">MAC Address de la terminal que realiza la transacción.</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Mensaje de error en la validación.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SetOperacion(EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion,System.Collections.Generic.Dictionary{EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion,System.Object})">
+            <summary>
+            Agrega la operación a realizar.
+            </summary>
+            <param name="codigoOperacion">Código para identificar a la operación.</param>
+            <param name="parametros"> Parámetros requeridos por el comercio dependiendo de codigoOperacion</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema en la asignación de la operación.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.AddParametroOperacion(EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion,System.Object)">
+            <summary>
+            Agrega un nuevo valor a la lista de parámetros ingresados previamente.
+            </summary>
+            <param name="parametroOperacion">Indicador del parámetro válido para la operación.</param>
+            <param name="valor">Valor del parámetro.</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema de validación en el formato válido del parámetro.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SetPromocionMeses(EGlobal.TotalPosSDKNet.Interfaz.Catalog.Promocion,System.Int32,System.Int32)">
+            <summary>
+            Indica el plan para diferir el pago.
+            </summary>
+            <param name="codigo"> Tipo de plan a utilizar.</param>
+            <param name="financiamiento">Numero de meses en que el pago no se hará exigible.</param>
+            <param name="parcializacion">Número de meses en que se van a dividir los pagos.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SetPromocionSkipPayment(System.Int32)">
+            <sumary>
+            Aplica la promoción Compre Hoy Pague Después.
+            </sumary>
+            <param name="financiamiento">Numero de meses en que el pago no se hará exigible.</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema de validación en el formato válido del parámetro.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SetDcc(EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc)">
+            <summary>
+            Indica los valores DCC.
+            </summary>
+            <param name="dcc">Objeto DCC.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.LeerTarjeta">
+            <summary>
+            Lee tarjeta cargo del Pin Pad.
+            </summary>
+            <returns>Tarjeta leída por el Pin Pad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.LeerTarjeta(System.String,System.String,System.String,System.String)">
+            <summary>
+            Agrega tarjeta cargo capturada por el comercio para operaciones MOTO.
+            </summary>
+            <param name="pan">Número de tarjeta cargo.</param>
+            <param name="fechaExpiracion">Fecha de expiración cargo.</param>
+            <param name="codigoSeguridad">Código de seguridad de la tarjeta cargo.</param>
+            <param name="tarjetahabiente">Nombre del Tarjetahabiente.</param>
+            <returns>Tarjeta cargo leída por el comercio.</returns>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema en el flujo de lectura de tarjeta cargo.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.LeerTarjetaAbono">
+            <summary>
+            Lee la tarjeta de abono a través del Pin Pad.
+            </summary>
+            <returns>Tarjeta abono leída por el Pin Pad.</returns>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema en el flujo de lectura de tarjeta de abono.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.LeerTarjetaAbono(System.String)">
+            <summary>
+            Lee tarjeta de abono tarjeta capturada por el comercio.
+            </summary>
+            <param name="numeroTarjetaAbono">Número de tarjeta a la que se desea abonar.</param>
+            <returns>Tarjeta leída por el comercio.</returns>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema en el flujo de lectura de tarjeta de abono.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.Autorizar">
+            <summary>
+            Solicita la autorización de la operación.
+            </summary>
+            <returns>Respuesta</returns>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Problema en el flujo de autenticación.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.ParameterValidator(System.String,System.String,System.String)">
+            <summary>
+            Validador de parametros.
+            </summary>
+            <param name="param">Nombre del parámetro.</param>
+            <param name="value">Valor del parámetro.</param>
+            <param name="regex">Expresión regular a validar.</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Mensaje de error en la validación.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.ParameterValidator(System.String,System.Enum)">
+            <summary>
+            Validador de parametros.
+            </summary>
+            <param name="param">Nombre del parámetro.</param>
+            <param name="e">Enumerador a validar.</param>
+            <exception cref="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">Mensaje de error en la validación.</exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.SincronizacionFinal">
+            <summary>
+            Método para finzalizar una transacción en curso.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Authorizer.Peticion.FinalizarLecturaTarjeta(System.String,System.String,System.String,System.String)">
+            <summary>
+            Método para finzalizar una transacción en curso.
+            </summary>
+            <param name="codigoRespuesta">Código de respuesta proporcionado por el host.</param>
+            <param name="numeroAutorizacion">Número de autorización proporcionado por el Host.</param>
+            <param name="datosAutenticacion">Datos EMV porporcionados por el Host.</param>
+            <param name="modoLectura">Modo en que fue ingresada la tarjeta al Pin Pad.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Firma">
+            <summary>
+            Tipo de Firma del pagaré.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Firma.SinFirma">
+            <summary>
+            Pagaré no requiere firma.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Firma.Autografa">
+            <summary>
+            Pagaré requiere firma autográfa.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Firma.Electronica">
+            <summary>
+            Pagaré firmado con NIP.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Firma.SinLeyenda">
+            <summary>
+            Pagaré sin ningún tipo leyenda
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Moneda">
+            <summary>
+            Monedas soportadas por la Interfaz.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Moneda.Pesos">
+            <summary>
+            Pesos - MXN
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Moneda.Dolares">
+            <summary>
+            Dólares - USD
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion">
+            <summary>
+            Operaciones soportadas por la Interfaz.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.Venta">
+            <summary>
+            Venta.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.VentaConPropina">
+            <summary>
+            Venta Con Propina.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.VentaConPostpropina">
+            <summary>
+            Venta con PostPropina.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.Postpropina">
+            <summary>
+            Postpropina.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.Devolucion">
+            <summary>
+            Devolución
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.ConsultaPuntos">
+            <summary>
+            Consulta de Puntos.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionVenta">
+            <summary>
+            Cancelación de Venta.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionVentaTarjeta">
+            <summary>
+            Cancelación de Venta con tarjeta presente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionDevolucion">
+            <summary>
+            Cancelación de Devolución.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionDevolucionTarjeta">
+            <summary>
+            Cancelación de Devolución con tarjeta presente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CargaLlaves">
+            <summary>
+            Carga de Llaves.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CheckIn">
+            <summary>
+            Check In.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionCheckIn">
+            <summary>
+            Cancelación de Check In.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionCheckInTarjeta">
+            <summary>
+            Cancelación de Check In con tarjeta presente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CargoCuarto">
+            <summary>
+            Cargo a Cuarto.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionCargoCuarto">
+            <summary>
+            Cancelación de Cargo a Cuarto.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.Reautorizacion">
+            <summary>
+            Resutorización.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionReautorizacion">
+            <summary>
+            Cancelación de Reautorización.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CheckOut">
+            <summary>
+            Check Out.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CheckOutTarjeta">
+            <summary>
+            Check Out con tarjeta presente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionCheckOut">
+            <summary>
+            Cancelación de Check Out.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CancelacionCheckOutTarjeta">
+            <summary>
+            Cancelación de Check Out con tarjeta presente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.DevolucionCheckOut">
+            <summary>
+            Devolución de Check Out
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CheckOutReautorizado">
+            <summary>
+            Check Out Reautorizado.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.CheckOutReautorizadoTarjeta">
+            <summary>
+            Check Out Reautorizado con tarjeta presente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoServicioEfectivo">
+            <summary>
+            Pago de Servicio en Efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoServicioEfectivoCifrado">
+            <summary>
+            Pago de Servicio en Efectivo Cifrado.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoServicioTarjeta">
+            <summary>
+            Pago de Servicio con Tarjeta.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoTarjetaEfectivo">
+            <summary>
+            Pago de Tarjeta De Crédito En efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoTarjetaEfectivoCifrado">
+            <summary>
+            Pago de Tarjeta De Crédito En efectivo Cifrado.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.AbonoTarjetaDebitoEfectivo">
+            <summary>
+            Abono Tarjeta De Débito En Efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.AbonoTarjetaDebitoEfectivoCifrado">
+            <summary>
+            Abono Tarjeta De Débito En Efectivo Cifrado.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.TraspasoEntreTarjetas">
+            <summary>
+            Traspaso Entre Tarjetas.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoHipotecarioEfectivo">
+            <summary>
+            Pago Hipotecario En Efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoHipotecarioEfectivoCifrado">
+            <summary>
+            Pago Hipotecario En Efectivo Cifrado.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.PagoHipotecarioTarjeta">
+            <summary>
+            Pago Hipotecario Con Tarjeta.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.AbonoCuentaExpressEfectivo">
+            <summary>
+            Abono Cuenta Express En Efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.AbonoCuentaExpressEfectivoCifrado">
+            <summary>
+            Abono Cuenta Express En Efectivo Cifrado.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.AbonoNumeroCelularEfectivo">
+            <summary>
+            Abono Número Celular En Efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion.AbonoNumeroCelularEfectivoCifrado">
+            <summary>
+            Abono Número Celular En Efectivo Cifrado.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion">
+            <summary>
+            Enumeración con los parámetros soportados por las transacciones.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Importe">
+            <summary>
+            Importe de la transacción.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Cash">
+            <summary>
+            Importe del retiro de efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.CashComision">
+            <summary>
+            Importe  de la comisión cobrada por retiro de efectivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.ReferenciaFinanciera">
+            <summary>
+            Referencia financiera asociada a una transacción.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.ReferenciaComercio">
+            <summary>
+            Referencia que el comercio asigna para identificar la transacción.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Puntos">
+            <summary>
+            Si la transacción será pagada con puntos.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Cuarto">
+            <summary>
+            Número de cuarto asociado a una operación de hotelería.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Folio">
+            <summary>
+            Número de folio asociado a una operación de hotelería.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Propina">
+            <summary>
+            Importe de la propina asociada a una transacción.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.Convenio">
+            <summary>
+            Id del convenio del servicio a pagar.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.ReferenciaPago">
+            <summary>
+            Número de cuenta y/o Id del cliente del servicio a pagar.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.NumeroCredito">
+            <summary>
+            Número o referencia del crédito hipotecario a pagar.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.NumeroCuentaExpress">
+            <summary>
+            Número de cuenta express a la que se abonará la cantidad seleccionada.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.ParametroOperacion.NumeroCelular">
+            <summary>
+            Número de celular a la que se abonará la cantidad seleccionada.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Promocion">
+            <summary>
+            Promociones soportadas por la interfaz.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Promocion.MesesSinIntereses">
+            <summary>
+            MSI - 03
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Promocion.MesesConIntereses">
+            <summary>
+            MCI - 05
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.Interfaz.Catalog.Promocion.CompreHoyPagueDespues">
+            <summary>
+            SKIP PAYMENT - 07
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.ReverseFileException">
+            <summary>
+            Clase que maneja las excepciones para el cierre de tarjeta de bines de sxcepción.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.ReverseFileException.#ctor(System.String)">
+            <summary>
+             Crea una instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.DecryptException">
+            <summary>
+            Clase que maneja las excepciones para el cierre de tarjeta de bines de sxcepción.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.DecryptException.#ctor(System.String)">
+            <summary>
+             Crea una instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.DatosEmvException">
+            <summary>
+            Clase que maneja las excepciones para el cierre de tarjeta de bines de sxcepción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.DatosEmvException.Emv">
+            <summary>
+            Devuelve lista de EMVs de la tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.DatosEmvException.#ctor(System.String,System.String[])">
+            <summary>
+            Inicializa una instancia de la clase para manejar las excepciones de la Interfaz.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+            <param name="emvs">EMV de la tarjeta.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PinPadKeysException">
+            <summary>
+            Clase que maneja la excepción provocada por un Pin Pad sin carga de llaves.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PinPadKeysException.#ctor(System.String)">
+            <summary>
+            Inicializa una instancia de la clase para manejar las excepciones de la Interfaz.
+            </summary>
+            <param name="message">Mensaje que despliega la excepción.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PinPadKeysException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una instancia de la clase para manejar las excepciones de la Interfaz.
+            </summary>
+            <param name="e">Excepcion que se recibe para desplegar el mensaje.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException">
+            <summary>
+            Clase que maneja las excepciones de la Interfaz.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException.#ctor(System.String)">
+            <summary>
+            Inicializa una instancia de la clase para manejar las excepciones de la Interfaz.
+            </summary>
+            <param name="message">Mensaje que despliega la excepción.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Exceptions.PeticionException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una instancia de la clase para manejar las excepciones de la Interfaz.
+            </summary>
+            <param name="e">Excepcion que se recibe para desplegar el mensaje.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion">
+            <summary>
+            Estructura de una afiliacion.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion.NumeroAfiliacion">
+            <summary>
+            Código para identificar la afiliación o comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion.NumeroAfiliacionAmex">
+            <summary>
+            Código para identificar la afiliación AMEX del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion.Moneda">
+            <summary>
+            Código para identificar la afiliación o comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion.RazonSocial">
+            <summary>
+            Razón Social asociada a la Afiliación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion.Direccion">
+            <summary>
+            Dirección asociada a la Afiliación.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Afiliacion.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase Afiliación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.NumeroTarjeta">
+            <summary>
+            Número de tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.FechaExpiracion">
+            <summary>
+            Fecha de expiración.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.CodigoSeguridad">
+            <summary>
+            Código de seguridad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.NombreTarjetahabiente">
+            <summary>
+             Nombre de tarjetahabiente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.Emisor">
+            <summary>
+            Código del banco emisor.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.Producto">
+            <summary>
+             Tipo de producto de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Card.ModoLectura">
+            <summary>
+             Modo en que se leyó la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.NumeroTarjeta">
+            <summary>
+            Número de tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.FechaExpiracion">
+            <summary>
+            Fecha de expiración.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.CodigoSeguridad">
+            <summary>
+            Código de seguridad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.NombreTarjetahabiente">
+            <summary>
+             Nombre de tarjetahabiente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.Emisor">
+            <summary>
+            Código del banco emisor.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.Producto">
+            <summary>
+             Tipo de producto de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.CardResponse.ModoLectura">
+            <summary>
+             Modo en que se leyó la tarjeta.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc">
+            <summary>
+            Clase para manejar conversión dinámica de moneda.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.MonedaExtranjera">
+            <summary>
+            Moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.MonedaLocal">
+            <summary>
+            Moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.CodigoMonedaExtranjera">
+            <summary>
+            Código de moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.CodigoMonedaLocal">
+            <summary>
+            Código de moneda local.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.TipoRespuestaDcc">
+            <summary>
+            Tipo de respuesta para DCC.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.MontoMonedaExtranjera">
+            <summary>
+            Importe en la moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.FolioExtranjero">
+            <summary>
+            Folio de módulo extranjero.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.TipoDeCambio">
+            <summary>
+            Tipo de cambio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.Comision">
+            <summary>
+            Comisión de la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.NombreMonedaLocal">
+            <summary>
+            Nombre de moneda local.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.NombreMonedaExtranjera">
+            <summary>
+            Nombre de moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.Aceptar">
+            <summary>
+            Indica si  DCC es aceptado.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Dcc.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase Dcc.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation">
+            <summary>
+            Clase para generar la petición a TotalPos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.OperationCode">
+            <summary>
+            Número asociado a la operación que se desea realizar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Amount">
+            <summary>
+            Monto de la transacción a realizar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.MerchantReference">
+            <summary>
+            Información descriptiva del comercio sobre la transacción a realizar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.FinancialReference">
+            <summary>
+            Información de referencia de la transacción aprobada que desea cancelar
+            revertir o forzar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Tip">
+            <summary>
+            Agregar un importe correspondiente a la propina.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Cash">
+            <summary>
+            Solicitud de extracción de dinero de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.CashFee">
+            <summary>
+             Indica la comisión que se cobrará por hacer un retiro de trajetas de débito.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.BatchWindow">
+            <summary>
+            Establece el número de ventana batch en la cual será depositada la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Authorization">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.TransactionSequence">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Reverse">
+            <summary>
+            Datos del reverso.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Table">
+            <summary>
+            Número de mesa.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Waiter">
+            <summary>
+            Identificador del mesero.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Room">
+            <summary>
+            Número de cuarto del huésped.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Reservation">
+            <summary>
+            Número asociado al registro del huésped.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.CieAgreementRequest">
+            <summary>
+            Id del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.CiePaymentReference">
+            <summary>
+            Id del cliente del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.MobileNumber">
+            <summary>
+            Id del cliente del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.ExpressAccountNumber">
+            <summary>
+            Id del cliente del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.CreditNumber">
+            <summary>
+            Id del cliente del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Points">
+            <summary>
+            El importe será utilizado del monto de puntos acumulados de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Amex">
+            <summary>
+            Especifica si el tipo de tarjeta es American Express o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Card">
+            <summary>
+            Información de la tarjeta que se está utilizando para la operación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.PaymentCard">
+            <summary>
+            Tarjeta a la que se hará un abono.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Promotion">
+            <summary>
+            Información de la promoción que será aplicada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.PuntosBbva">
+            <summary>
+            Balance de puntos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.Dcc">
+            <summary>
+            Información DCC que será aplicada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.CardToken">
+            <summary>
+            Tokens.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase Operation.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Operation.#ctor(EGlobal.TotalPosSDKNet.Interfaz.Catalog.Operacion)">
+            <summary>
+            Crea una nueva instancia de la clase Operation.
+            </summary>
+            <param name="operationCode">Recibe el código de operación.</param>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.OperationCode">
+            <summary>
+            Número asociado a la operación que se desea realizar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Amount">
+            <summary>
+            Monto de la transacción a realizar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.MerchantReference">
+            <summary>
+            Información descriptiva del comercio sobre la transacción a realizar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.FinancialReference">
+            <summary>
+            Información de referencia de la transacción aprobada que desea cancelar
+            revertir o forzar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Tip">
+            <summary>
+            Agregar un importe correspondiente a la propina.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Cash">
+            <summary>
+            Solicitud de extracción de dinero de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CashFee">
+            <summary>
+             Indica la comisión que se cobrará por hacer un retiro de trajetas de débito.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.BatchWindow">
+            <summary>
+            Establece el número de ventana batch en la cual será depositada la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Authorization">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.TransactionSequence">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Reverse">
+            <summary>
+            Datos del reverso.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Table">
+            <summary>
+            Número de mesa.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Waiter">
+            <summary>
+            Identificador del mesero.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Room">
+            <summary>
+            Número de cuarto del huésped.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Reservation">
+            <summary>
+            Número asociado al registro del huésped.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CieGuide">
+            <summary>
+            Guía CIE.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CiePaymentReference">
+            <summary>
+            Id del cliente del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CieAgreement">
+            <summary>
+            Id del servicio a pagar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CieLegalName">
+            <summary>
+            Razón Social CIE.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.ExpressAccount">
+            <summary>
+            Cuenta Expresss.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.MobileNumber">
+            <summary>
+            Número celular.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CardNumber">
+            <summary>
+            Número de tarjeta ligada a la cuenta express o número celular.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CreditNumber">
+            <summary>
+            Número del crédito hiportecario.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.MortgageFolio">
+            <summary>
+            Folio Crédito Hipotecario.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.HolderName">
+            <summary>
+            Nombre del titular del crédito hipotecario.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.UDISAmount">
+            <summary>
+            Importe pagado equivalente en UDIS.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Points">
+            <summary>
+            El importe será utilizado del monto de puntos acumulados de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Amex">
+            <summary>
+            Especifica si el tipo de tarjeta es American Express o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Card">
+            <summary>
+            Información de la tarjeta que se está utilizando para la operación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.PaymentCard">
+            <summary>
+            Tarjeta a la que se hará un abono.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Promotion">
+            <summary>
+            Información de la promoción que será aplicada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.PuntosBbva">
+            <summary>
+            Balance de puntos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.Dcc">
+            <summary>
+            Información DCC que será aplicada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.CardToken">
+            <summary>
+            Tokens.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.OperationResponse.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase Operation.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.PaymentCard.NumeroTarjeta">
+            <summary>
+            Número de tarjeta.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Promotion">
+            <summary>
+            Información de la promoción que será aplicada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Promotion.Code">
+            <summary>
+            Código del tipo de promoción, verificar en tabla correspondiente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Promotion.Financing">
+            <summary>
+            Número de meses para financiar el cargo.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Promotion.Part">
+            <summary>
+            Número de meses para dividir el cargo.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta">
+            <summary>
+            Clase que contiene la respuesta de TotalPos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Leyenda">
+            <summary>
+            Respuesta del emisor.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CodigoRespuesta">
+            <summary>
+            Código de respuesta del emisor.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Afiliacion">
+            <summary>
+            Este número lo proporciona BBVA y está formado por 7 números.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.AfiliacionAmex">
+            <summary>
+            Número de la afiliación Amex.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Moneda">
+            <summary>
+            Moneda en la que opera la afiliación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.RazonSocial">
+            <summary>
+            Razón social del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Direccion">
+            <summary>
+            Dirección del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.FechaHora">
+            <summary>
+            Fecha y hora de la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Operador">
+            <summary>
+            Operador que envía la operación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NumeroTerminal">
+            <summary>
+            Este número lo define el comercio para identificar a cada una de sus terminales punto de venta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.MacTerminal">
+            <summary>
+            Dirección física del equipo que envía la operación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NumeroTarjeta">
+            <summary>
+            Contiene el número de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ModoLectura">
+            <summary>
+            Contiene los valores de 05 para tarjetas insertadas (Chip), 01 cuando la tarjeta fue digitada, 90 cuando se deslizó la tarjeta (banda), 80 cuando fue por error en chip (full back). 
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Tarjetahabiente">
+            <summary>
+            Contiene el nombre del tarjetahabiente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.TrackII">
+            <summary>
+            Contiene el Track 2 de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.TrackI">
+            <summary>
+            Contiene el Track 1 de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Cvv">
+            <summary>
+            Contiene el código de seguridad de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CriptogramaTarjeta">
+            <summary>
+            Esta propiedad contiene información cuando la transacción se realizó con una tarjeta chip, debe de visualizarse en el ticket.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.IdAplicacionTarjeta">
+            <summary>
+            Esta propiedad debe de estar presente en el ticket cuando la transacción se realizó con una tarjeta con chip.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.AplicacionTarjeta">
+            <summary>
+            Esta propiedad debe de estar presente en el ticket cuando la transacción se realizó con una tarjeta con chip.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ProductoTarjeta">
+            <summary>
+            Esta propiedad debe de estar presente en el ticket cuando la transacción se realizó con una tarjeta con chip.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.EmisorTarjeta">
+            <summary>
+            Banco emisor de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CodigoOperacion">
+            <summary>
+            Código de transacción del requerimiento, identifica el tipo de operación que será procesada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Autorizacion">
+            <summary>
+            Regresa el número de autorización (6 dígitos) proporcionado por el banco emisor.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Importe">
+            <summary>
+            Monto por el cual se realizará la solicitud y no incluye punto decimal.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NombreTransaccion">
+            <summary>
+            Indica el tipo de transacción que se realizó.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ReferenciaDelComercio">
+            <summary>
+            Campo propio del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ReferenciaFinanciera">
+            <summary>
+            Durante el proceso de una operación de cancelación  y post propina, es necesario que éste dato concuerde con el enviado durante el proceso de venta, en caso de no coincidir con el de la venta la operación de cancelación y de post propina  será denegada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SecuenciaTransaccion">
+            <summary>
+            Durante el proceso de una operación de cancelación, es necesario que éste dato concuerde con el enviado durante el proceso de venta, en caso de no coincidir con el de la venta, la operación de cancelación será denegada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Cash">
+            <summary>
+            Importe del retiro de efectivo sin incluir el punto decimal. Esta funcionalidad debe ser negociada con BBVA  para que se habilite en la afiliación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CashComision">
+            <summary>
+            Importe de la comisión cobrada por retiro de efectivo.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Financiamiento">
+            <summary>
+            Número de meses para financiar el cargo.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Parcializacion">
+            <summary>
+            Número de meses para dividir el cargo.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CodigoPromocion">
+            <summary>
+            Código del tipo de promoción, verificar en tabla correspondiente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Firma">
+            <summary>
+            Indica si la firma es autografa, electronica o qps.
+            Qps: Autorizada por QPS y no requiere que el cliente firme .
+            Autografa: Firma para que el cliente lo firme.
+            Electronica: Autorizada por Firma Electrónica y no requiere que el cliente firme.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Propina">
+            <summary>
+            Solo se utiliza para operaciones en donde se ingresa propina su formato es como el del campo importe.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NumeroCuarto">
+            <summary>
+            Sólo se utiliza cuando son transacciones de hoteles.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Folio">
+            <summary>
+            Sólo cuando las transacciones son de hoteles es obligatorio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.PesosRedimidos">
+            <summary>
+            Es parte de la estructura de puntos contiene la cantidad en pesos que fueron utilizados para pagar la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.PuntosRedimidos">
+            <summary>
+            Es parte de la estructura de puntos contiene los puntos que fueron utilizados en la transacción, se debe dividir entre 100 para obtener el valor; este se debe visualizar en el ticket.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.FactorExponenciacion">
+            <summary>
+            Forma parte de la estructura de redención de puntos, contiene el valor de exponenciación de puntos (doble, triple, etc).
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoDisponiblePesos">
+            <summary>
+            Es parte de la estructura de puntos contiene la cantidad en pesos del saldo disponible.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoAnteriorPuntos">
+            <summary>
+            Es parte de la estructura de puntos contiene los puntos anteriores, se debe dividir entre 100 para obtener el valor; este se debe visualizar en el ticket.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoAnteriorPesos">
+            <summary>
+            Es parte de la estructura de puntos contiene la cantidad en pesos del saldo anterior.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.VigenciaPromocionExponencial">
+            <summary>
+            Es parte de la estructura de puntos indica la videncia de los puntos exponenciales.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoRedimidoExponencialPesos">
+            <summary>
+            Es parte de la estructura de puntos contiene la cantidad en pesos exponenciales del saldo que fue utilizado.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoRedimidoExponencialPuntos">
+            <summary>
+            Es parte de la estructura de puntos son los puntos exponenciales utilizados en la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoDisponibleExponencialPesos">
+            <summary>
+            Es parte de la estructura de puntos contiene la cantidad en pesos exponenciales del saldo disponible.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoDisponibleExponencialPuntos">
+            <summary>
+            Es parte de la estructura de puntos son los puntos exponenciales disponibles o actuales con los que el cliente cuenta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.GuiaCie">
+            <summary>
+            Guía CIE
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ReferenciaPago">
+            <summary>
+            Número de cuenta o identificador del servicio que se pagó.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ConvenioCIE">
+            <summary>
+            Identificador del servicio que se pagó.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.RazonSocialCorresponsal">
+            <summary>
+            Razón social del servicio que se pagó.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CuentaExpress">
+            <summary>
+            Número de cuenta express;
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Celular">
+            <summary>
+            Número celular.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NumeroTarjetaExpressMovil">
+             <summary>
+             Número de tarjeta asociada a una cuenta express o número celular.
+             </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NumeroCredito">
+            <summary>
+            Número del crédito hipotecario.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.FolioHipotecario">
+            <summary>
+            Folio Crédito Hipotecario.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NombreTitular">
+            <summary>
+            Nombre del titular del crédito hipotecario.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.ImporteUDIS">
+            <summary>
+            Importe pagado equivalente en UDIS.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.TarjetaAbono">
+            <summary>
+            Tarjeta abono
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.SaldoPuntosDisponibles">
+            <summary>
+            Es parte de la estructura de puntos son los puntos disponibles o actuales con los que el cliente cuenta; este se debe visualizar en el ticket.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.MonedaExtranjera">
+            <summary>
+            Moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.MonedaLocal">
+            <summary>
+            Moneda Local.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.MontoMonedaExtranjera">
+            <summary>
+            Monto en moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.FolioExtranjero">
+            <summary>
+            Folio de módulo extranjero.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.TipoCambio">
+            <summary>
+            Tipo de cambio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.Comision">
+            <summary>
+            Comisión.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.TipoRespuesta">
+            <summary>
+            Regresa el tipo de respuesta DCC.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CodigoMonedaExtranjera">
+            <summary>
+            Código moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.CodigoMonedaLocal">
+            <summary>
+            Código moneda local.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NombreMonedaExtranjera">
+            <summary>
+            Nombre Moneda extranjera.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.NombreMonedaLocal">
+            <summary>
+            Nombre moneda local.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.AceptoDcc">
+            <summary>
+            Indica si se aceptó la conversión de divisas o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.BinExcepcion">
+            <summary>
+            Indica si la tarjeta se encuentra cifrada o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.TokensTarjeta">
+            <summary>
+            Devuelve los tokens del Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.EmvTarjeta">
+            <summary>
+            Devuelve datos EMV de la tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.#ctor(EGlobal.TotalPosSDKNet.Interfaz.Layout.Card)">
+            <summary>
+            Crea una nueva instacia de la clase Respuesta.
+            </summary>
+            <param name="card">Respuesta para bines de excepción.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Respuesta.#ctor(EGlobal.TotalPosSDKNet.Interfaz.Layout.TransactionResponse)">
+            <summary>
+            Crea una nueva instacia de la clase Respuesta.
+            </summary>
+            <param name="t">Respuesta de la transacción para mostrar al cliente.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta">
+            <summary>
+            Muestra información relevante de la tajeta leída por el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta.Pan">
+            <summary>
+            Número de tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta.Producto">
+            <summary>
+            Tipo de producto de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta.Emisor">
+            <summary>
+            Código del banco emisor.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta.Tarjetahabiente">
+            <summary>
+            Nombre de tarjetahabiente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta.Nip">
+            <summary>
+             Si la tarjeta requiere de NIP o no.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Tarjeta.#ctor(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Crea una nueva instancia de la clase Tarjeta.
+            </summary>
+            <param name="pan">Número de tarjeta</param>
+            <param name="producto">Tipo de producto de la tarjeta.</param>
+            <param name="emisor">Código del banco emisor.</param>
+            <param name="tarjetahabiente">Nombre de tarjetahabiente</param>
+            <param name="nip">Si la tarjeta requiere nip.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Terminal">
+            <summary>
+            Estructura de una terminal.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Terminal.NumeroTerminal">
+            <summary>
+            Código para identificar terminal de una afiliación o comercio registrado.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Layout.Terminal.Mac">
+            <summary>
+            Identificador único asignado por el fabricante a la terminal.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Layout.Terminal.#ctor">
+            <summary>
+            Crea una nueva instancia de Terminal.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Layout.Transaction">
+            <summary>
+            Mensaje de petición a TotalPos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Service.PinPadManager.Instance">
+            <summary>
+            Obtiene instancia de Interfaz.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion">
+            <summary>
+            Clase para almacenar y obtener la configuración de la Interfaz.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.ComercioAfiliacion">
+            <summary>
+            Indica la afiliación del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.ComercioTerminal">
+            <summary>
+            Indica la terminal del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.ComercioMac">
+            <summary>
+            Indica la MAC del comercio.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadConexion">
+            <summary>
+            Indica el tipo de conexión del Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadTimeOut">
+            <summary>
+            Equivale al tiempo en segundos que el Pin Pad espera una respuesta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadPuerto">
+            <summary>
+            Indica el puerto del Pin Pad en caso de ser una conexión WIFI.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadMensaje">
+            <summary>
+            Mensaje que se muestra en la pantalla del Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.HostUrl">
+            <summary>
+             Dirección IP o Url a la que el componente enviará las transacciones.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.BinesUrl">
+            <summary>
+            Dirección IP o Url a la que el componente consultará los Bines.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.TokenUrl">
+            <summary>
+            Dirección IP o Url a la que el componente obtendrá los permisos de operación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.TelecargaUrl">
+            <summary>
+            Dirección IP o Url a la que el componente obtendrá el archivo de telecarga.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.HostTimeOut">
+            <summary>
+            Tiempo que el componente espera una respuesta del Host.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PathPinPad">
+            <summary>
+            Contiene la ruta del archivo de propiedades del Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.ClaveBines">
+            <summary>
+            Clave de bines para omitir cifrado.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadCargaLlaves">
+            <summary>
+            Indica si es necesaria una carga de llaves.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadTelecarga">
+            <summary>
+            Indica si es necesaria una carga Telecarga.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.IdAplicacion">
+            <summary>
+            Identificador único del comercio que autoriza realizar transacciones.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.ClaveSecreta">
+            <summary>
+            Clave secreta del comercio que autoriza realizar transacciones.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.ClaveLogs">
+            <summary>
+            Clave secreta para encriptar los logs de la interfaz.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.Logs">
+            <summary>
+            Indica si es necesario generar logs o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.PinPadContactless">
+            <summary>
+            Indica si el PinPad obtendrá los datos de la tarjeta por aproximación.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.FuncionalidadGaranti">
+            <summary>
+            Indica si la funcionalidad Garanti está activada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.FuncionalidadMoto">
+            <summary>
+            Indica si la funcionalidad MoTo está activada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.TecladoLiberado">
+            <summary>
+            Indica si la funcionalidad de Teclado Liberado está activada.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase Configuración.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.LoadProperties">
+            <summary>
+            Asigna las propiedades del archivo a las de la clase.
+            </summary>
+            <exception cref="T:System.IO.FileNotFoundException"></exception>
+            <exception cref="T:System.IO.IOException"></exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.LoadPinPadFile">
+            <summary>
+            Carga el archivo de propiedades del pinpad o genera una excepción.
+            </summary>
+            <exception cref="T:System.IO.IOException"></exception>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.Interfaz.Util.Configuracion.SetPinPadConfig(System.String,System.String)">
+            <summary>
+            Modifica el valor de la configuración del archivo pinpad.config para carga de llaves o telecarga.
+            </summary>
+            <param name="sNode"> Nodo a modificar</param>
+            <param name="sValue">Valor a guardar</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter">
+            <summary>
+            Clase de apoyo para realizar conversiones de diversos tipos.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.IntToHex(System.Int32)">
+            <summary>
+            Función que se utiliza para convertir un entero a una cadena hexadecimal.
+            </summary>
+            <param name="i">Entero a convertir.</param>
+            <returns>Cadena hexadecimal</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.IntToHex(System.Byte[])">
+            <summary>
+            Función que convierte un arreglo de enteros a una cadena hexadecimal.
+            </summary>
+            <param name="d">Arreglo de enteros a convertir.</param>
+            <returns>Cadena hexadecimal.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.IntToByte(System.Int32)">
+            <summary>
+            Función que convierte un entero en byte.
+            </summary>
+            <param name="i">Entero a convertir</param>
+            <returns>Byte equivalente del entero dado.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.CharToHex(System.Char)">
+            <summary>
+            Funcion que convierte un caracter a su valor hexadecimal.
+            </summary>
+            <param name="c">Caracter a convertir.</param>
+            <returns>Cadena hexadecimal equivalente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.HexToChar(System.String)">
+            <summary>
+            Función que convierte un valor hexadecimal de dos posiciones en un caracter.
+            </summary>
+            <param name="hex">Valor hexadecimal en string a convertir.</param>
+            <returns>Caracter equivalente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.AsciiToHex(System.String)">
+            <summary>
+            Función que convierte una cadena ASCII en su equivalente hexadecimal.
+            </summary>
+            <param name="sAlpha">Cadena ASCII a convertir.</param>
+            <returns>Cadena hexadecimal correspondiente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.HexToAscii(System.String)">
+            <summary>
+            Función que convierte una cadena hexadecimal en ASCII.
+            </summary>
+            <param name="hex">Cadena hexadecimal a convertir.</param>
+            <returns>Cadena ASCII equivalente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.HexToInt(System.String)">
+            <summary>
+            Función que converte una valor hexadecimal en se equivalente en bytes.
+            </summary>
+            <param name="hex">Valor hexadecimal a convertir.</param>
+            <returns>Byte equivalente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.HexToIntArray(System.String)">
+            <sumary>
+            Función que devuelve el equivalente en arreglo de bytes del valor hexadecimal (en conjunto dos digitos) especificado.
+             </sumary>
+             <param name="hex">Valor hexadecimal.</param>
+             <returns>Arreglo de bytes equivalente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.IntToChar(System.Byte)">
+            <summary>
+            Función que convierte un byte en caracter.
+            </summary>
+            <param name="b">Byte a convertir.</param>
+            <returns>Caracter equivalente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Converter.IntToAscii(System.Byte[])">
+            <summary>
+            Función que transforma un arreglo de bytes en una cadena ASCII.
+            </summary>
+            <param name="b">Arreglo de bytes a convertir.</param>
+            <returns>Cadena ASCII equivalente.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Padding">
+            <summary>
+            Clase de apoyo para generar paddings.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Padding.Left(System.String,System.Int32)">
+            <summary>
+            Función que agerega los espacios indicados a la izquierda.
+            </summary>
+            <param name="s">Cadena a completar.</param>
+            <param name="size">Número de posiciónes que se añadirán la cadena.</param>
+            <returns>Cadena con los espacios indicados.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Padding.Left(System.String,System.Int32,System.Char)">
+            <summary>
+            Función que agrega a la izquierda el número de caracteres indicados.
+            </summary>
+            <param name="s">Cadena que se desea completar.</param>
+            <param name="size">Número de caracteres a agregar.</param>
+            <param name="filler">Caracter con el que se desea completar la cadena.</param>
+            <returns>Cadena completada con el número de caracteres indicados.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Padding.Rigth(System.String,System.Int32)">
+            <summary>
+            Función que agerega los espacios indicados a la derecha.
+            </summary>
+            <param name="s">Cadena a completar.</param>
+            <param name="size">Número de posiciónes que se añadirán la cadena.</param>
+            <returns>Cadena con los espacios indicados.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Padding.Rigth(System.String,System.Int32,System.Char)">
+            <summary>
+            Función que agrega a la derecha el número de caracteres indicados.
+            </summary>
+            <param name="s">Cadena que se desea completar.</param>
+            <param name="size">Número de caracteres a agregar.</param>
+            <param name="filler">Caracter con el que se desea completar la cadena.</param>
+            <returns>Cadena completada con el número de caracteres indicados.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Parser">
+            <summary>
+            Clase de apoyo para hacer conversión entre tipos de datos.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Parser.ParseStringToDecimal(System.String)">
+            <summary>
+            Función que transforma un valor monetario en cadena a su equivalente en decimal.
+            </summary>
+            <param name="value">Cantidad monetaria en string.</param>
+            <returns>Equivalente en decimal.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Parser.ParseDecimalToCurrencyString(System.Decimal)">
+            <summary>
+            Función que transforma un valor decimal a su equivalente en cadena con simbolo de moneda.
+            </summary>
+            <param name="value">Cantidad monetaria en string.</param>
+            <returns>Equivalente en decimal.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.JUtils.Utils.Parser.ParseDecimalToString(System.Decimal)">
+            <summary>
+            Función que transforma un valor decimal a su equivalente en cadena.
+            </summary>
+            <param name="value">Cantidad monetaria en decimal.</param>
+            <returns>Equivalente en cadena.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.Log.Level">
+            <summary>
+            Niveles de Log.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Log.Level.DEBUG">
+            <summary>
+            Depuración.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Log.Level.INFO">
+            <summary>
+            Información.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Log.Level.WARN">
+            <summary>
+            Peligro.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Log.Level.ERROR">
+            <summary>
+            Error.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.Log.Logger">
+            <summary>
+            Clase para generar logs.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.Logger.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="clazz">Nombre de la clase a la que pertenecerá el Log.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.Logger.Debug(System.String)">
+            <summary>
+            Genera una traza en el log de nivel Debug.
+            </summary>
+            <param name="sMessage">Mensaje a mostrar en la traza</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.Logger.Info(System.String)">
+            <summary>
+            Genera una traza en el log de nivel Info.
+            </summary>
+            <param name="sMessage">Mensaje a mostrar en la traza</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.Logger.Warn(System.String)">
+            <summary>
+            Genera una traza en el log de nivel Warning.
+            </summary>
+            <param name="sMessage">Mensaje a mostrar en la traza</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.Logger.Error(System.String)">
+            <summary>
+            Genera una traza en el log de nivel Error.
+            </summary>
+            <param name="sMessage">Mensaje a mostrar en la traza</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.Log.LogManager">
+            <summary>
+            Clase para generar los logs del componente.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.Log.LogManager.ActiveLogFile">
+            <summary>
+            Obtiene o establece si se escribirán o no los logs.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.Log.LogManager.Instance">
+            <summary>
+            Obtiene una instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.LogManager.GetLogger(System.String)">
+            <summary>
+            Obtiene el Log de la clase a generar.
+            </summary>
+            <param name="t">Nombre de clase del log.</param>
+            <returns>Log de la clase.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.Log.LogManager.AddTrace(System.String,EGlobal.TotalPosSDKNet.JPinPad.Log.Level,System.String)">
+            <summary>
+            Genera las trazas en el archivo de Log.
+            </summary>
+            <param name="t">Clase a la que corresponde el Log.</param>
+            <param name="level">Nivel de la traza del log.</param>
+            <param name="message">Mensaje que se imprimirá en el archivo.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest">
+            <summary>
+            Implementación para solicitud de lectura de tarjeta
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.TransactionAmount">
+            <summary>
+            Monto de la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.Cash">
+            <summary>
+            Monto de retiro.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.Currency">
+            <summary>
+            Moneda en que se realiza la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.DateTime">
+            <summary>
+            Fecha y hora en que se realiza la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.SecurityCode">
+            <summary>
+            Código de seguridad de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.ExpirationDate">
+            <summary>
+            Fecha de expiración de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.AuthorizationOnline">
+            <summary>
+            Si la transacción si puede autorizar en línea o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.Amex">
+            <summary>
+            Indica si transacción es con una tarjeta American Express o no.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.Refund">
+            <summary>
+            Indica si la transacción es una devolución.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.MaskAccount">
+            <summary>
+            Indica si se enmascara la cuenta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.PanLength">
+            <summary>
+            Indica la lognitud del número de tarjeta a mostrar.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.#ctor">
+            <summary>
+            Crea una nueva instacia de la clase CardRequest.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.#ctor(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.PanLength)">
+            <summary>
+            Crea una nueva instacia de la clase CardRequest.
+            </summary>
+            <param name="sTransactionAmount">Importe de la transacción.</param>
+            <param name="sDateTime">"Fecha y hora en que se realiza la transacción."</param>
+            <param name="securityCode">"Código de seguridad de la tarjeta."</param>
+            <param name="expirationDate">"Fecha de expiración de la tarjeta."</param>
+            <param name="authorizationOnline">"Si la transacción se debe autorizar en línea o no."</param>
+            <param name="panLength">Indica la longitud del número de tarjeta a mostrar.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest.#ctor(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Crea una nueva instacia de la clase CardRequest.
+            </summary>
+            <param name="sTransactionAmount">Importe de la transacción.</param>
+            <param name="sCash">Importe del retiro.</param>
+            <param name="sDateTime">"Fecha y hora en que se realiza la transacción."</param>
+            <param name="securityCode">"Código de seguridad de la tarjeta."</param>
+            <param name="expirationDate">"Fecha de expiración de la tarjeta."</param>
+            <param name="authorizationOnline">"Si la transacción se debe autorizar en línea o no."</param>
+            <param name="maskAccount">Indica si el número de tarjeta se muestra completo o enmascarado.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard">
+            <summary>
+            Implementación para tarjeta basadas en chip.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard.Emv">
+            <summary>
+            Lista de EMV.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard.AddEmv(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv)">
+            <summary>
+            Agrega un valor EMV a la lista.
+            </summary>
+            <param name="emv">Emv a agregar.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard.GetEmv(System.String)">
+            <summary>
+            Obtiene un valor EMV de la lista.
+            </summary>
+            <param name="id">Id el EMV a obtener.</param>
+            <returns>EMV indicado por el Id.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization">
+            <summary>
+            Clase que contiene la información necesaria para terminar la transacción con el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.ResponseCode">
+            <summary>
+            Código de respuesta obtenido del autorizador.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.AuthorizationNumber">
+            <summary>
+            Número de autorización obtenido del autorizador.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.EmvTags">
+            <summary>
+            Obtiene los tags EMV.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.WithEmvValidation">
+            <summary>
+            Determina si se hará o no la validación del EMV.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.IsApproved">
+            <summary>
+            Indica si la transacción fue o no aprovada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.Scripts">
+            <summary>
+            Lista de scripts obtenidos del autorizador.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.Tags">
+            <summary>
+            Lista de tags.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCardAuthorization.#ctor(System.String,System.String,System.Collections.Generic.List{EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag},System.Collections.Generic.List{EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script},System.Boolean)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="sResponseCode">Código de respuesta.</param>
+            <param name="sAuthorizationNumber">Número de autorización</param>
+            <param name="tags">Tags EMV a validar.</param>
+            <param name="scripts">Scripts a ejecutar.</param>
+            <param name="bWithEmvValidation">Indica si se validará los datos EMV.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest">
+            <summary>
+            Implementación para solicitud de lectura de tarjeta para
+            cifrado de corresponsales.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.TransactionAmount">
+            <summary>
+            Monto de la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.Pan">
+            <summary>
+            Número de la tarjeta a abonar.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.Usuario">
+            <summary>
+            Identificador del usuario que realiza la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.ReferenciaPago">
+            <summary>
+            Número o indicador de la cuenta que se está pagando.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.IdTienda">
+            <summary>
+            Identificador de la localidad de dónde se realiza la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.IdTerminal">
+            <summary>
+            Número o identificador de la terminal con la que se realiza
+            la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.Serial">
+            <summary>
+            Número de serie del Pin Pad con el que se realiza
+            el cifrado de la transacción.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest.#ctor(System.Decimal,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Crea una nueva instacia de la clase CardRequest.
+            </summary>
+            <param name="transactionAmount">Importe de la transacción.</param>
+            <param name="pan">"Número de la tarjeta de abono,"</param>
+            <param name="operatorId">"Id del operador que realiza la transacción."</param>
+            <param name="referenciaPago">"Número o indicador de la cuenta que se está pagando."</param>
+            <param name="idTienda">Identificador de la localidad de dónde se realiza la transacción.</param>
+            <param name="idTerminal">Número o identificador de la terminal con la que se realiza la transacción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard">
+            <summary>
+            Interfaz para tarjetas de crédito o débito
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetPrimaryAccountNumber">
+            <summary>
+            Devuelve el número de la tarjeta
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetCardHolder">
+            <summary>
+            Devuelve el nombre del tarjetahabiente
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetTrackII">
+            <summary>
+            Devuelve ek TrackII
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetTrackI">
+            <summary>
+            Devuleve el Track I
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetSecurityCode">
+            <summary>
+            Devuelve el código de seguridad de la tarjeta
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetEntryMode">
+            <summary>
+            Devuelve el código de seguridad de la tarjeta
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICard.GetExpirationDate">
+            <summary>
+            Devuelve la fecha de vencimiento de la tarjeta
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization">
+            <summary>
+            Interfaz para autorización de tarjetas leídas mediante
+            CardReader
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization.AuthorizationNumber">
+            <summary>
+            Devuelve número de autorización de la transacción
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization.ResponseCode">
+            <summary>
+            Devuelve código de respuesta del emisor
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization.IsApproved">
+            <summary>
+            Indica si la transacción fue aprobada
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization.WithEmvValidation">
+            <summary>
+            Indica si la transacción fue aprobada
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard">
+            <summary>
+            Implementación para tarjetas con banda magnética
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.Properties">
+            <summary>
+            Obtiene o establece las propiedades de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.Tokens">
+            <summary>
+            Obtiene o establece la lista de tokens.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.AddProperty(System.String,System.Object)">
+            <summary>
+            Agrega una nueva propiedad a la tarjeta.
+            </summary>
+            <param name="sKey">Clave de la porpiedad.</param>
+            <param name="value">Valor de la propiedad</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetProperty(System.String)">
+            <summary>
+            Obtiene una propiedad de la tarjeta.
+            </summary>
+            <param name="prop">Clave de la propiedad.</param>
+            <returns>Propiedad indicada por la clave.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetPrimaryAccountNumber">
+            <summary>
+            Obtiene el número de la tarjeta.
+            </summary>
+            <returns>Número de la tarjeta.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetCardHolder">
+            <summary>
+            Obtiene el nombre del tarjetahabiente.
+            </summary>
+            <returns>Tarjetahabiente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetTrackII">
+            <summary>
+            Obtiene el Track 2.
+            </summary>
+            <returns>Tarjetahabiente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetTrackI">
+            <summary>
+            Obtiene el Track 1.
+            </summary>
+            <returns>Tarjetahabiente.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetSecurityCode">
+            <summary>
+            Obtiene el código de seguridad de la tarjeta.
+            </summary>
+            <returns>Código de seguridad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetEntryMode">
+            <summary>
+            Obtiene el método de entrada de la tarjeta.
+            </summary>
+            <returns>Código de seguridad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetExpirationDate">
+            <summary>
+            Obtiene la fecha de expiración de la trajeta.
+            </summary>
+            <returns>Fecha de expiración.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.ContainsProperty(System.String)">
+            <summary>
+            Obtiene si existe la propiedad en la tarjeta.
+            </summary>
+            <param name="sProp">Propiedad que se desea verificar.</param>
+            <returns>Si existe la propiedad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.AddToken(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token)">
+            <summary>
+            Agrega un token a la tarjeta.
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCard.GetToken(System.String)">
+            <summary>
+            Obtiene un token de la tarjeta.
+            </summary>
+            <param name="sTokenId">Id del token que se desea obtener.</param>
+            <returns>Token.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization">
+            <summary>
+            Clase que contiene la información para terminar una transacción financiera
+            de una tarjera de banda o digitada.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization.ResponseCode">
+            <summary>
+            Código de respuesta de la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization.AuthorizationNumber">
+            <summary>
+            Número de autorización de la transacción.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization.WithEmvValidation">
+            <summary>
+            Obtiene si debe validar la respuesta EMV.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization.IsApproved">
+            <summary>
+            Indica si la transacción fue aprobada o no.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.MagneticCardAuthorization.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="sResponseCode">Código de respuesta de la transacción.</param>
+            <param name="sAuthorizationNumber">Número de autorización de la transacción.</param>
+            <param name="bWithEmvValidation">Validación del EMV.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.PanLength">
+            <summary>
+            Indica el valor a retornar para la función C50.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.PanLength.PanCompleto">
+            <summary>
+            Número de tarjeta completo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.PanLength.BinSeisPosiciones">
+            <summary>
+            Primeros 6 dígitos del número de tarjeta.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.PanLength.BinOchoPosiciones">
+            <summary>
+            Primero 8 dígitos del número de tarjeta.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.CancelCommand">
+            <summary>
+            Implementación parea comando 72, ocupado para
+            cancelar la operación actual ejecutándose en el
+            Pin Pad.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.CloseSessionCommand">
+            <summary>
+            Comando para cerrar sesión de operador
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command">
+            <summary>
+            Abstracción para comandos del Pin Pad
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.Name">
+            <summary>
+            Obtiene o establece el nombre del comando.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.Initialize">
+            <summary>
+            Inicializa el comando, este método es llamado en
+            la ejecución del método <code>Encode</code>
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.SetArg(System.String,System.Object)">
+            <summary>
+            Agrega un argumento al comando.
+            </summary>
+            <param name="key">Nombre del argumento.</param>
+            <param name="value">Valor del argumento.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.GetArg(System.String)">
+            <summary>
+            Obtiene un argumento del comando a través de su Id.
+            </summary>
+            <param name="key">Id del argumento.</param>
+            <returns>Argumento.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.AddParameter(System.String,System.String)">
+            <summary>
+            Agrega un parámetro al comando
+            </summary>
+            <param name="key">Clave del parámetro</param>  
+            <param name="value">Valor del parámetro</param>  
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.SetParameter(System.String,System.String)">
+            <summary>
+            Establece el valor de un parámetro existente en el comando
+            </summary>
+            <param name="key">Clave del parámetro</param>  
+            <param name="value">Valor del parámetro</param>  
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.GetParameter(System.String[])">
+            <summary>
+            Devuelve el valor de o los parámetros especificados
+            </summary>
+            <param name="keys">Clave(s) de o los parámetros que se desean recuperar</param>  
+            <returns>Valor de o los parámetros especificados</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.ClearAll">
+            <summary>
+            Limpia los argumentos del comando.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.Encode">
+            <summary>
+            Crea el comando en base a la especificación.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.CalculateLRC(System.Byte[],System.Boolean)">
+            <summary>
+            Calcula el LRC del comando.
+            </summary>
+            <param name="message">Mensaje al que se calculará el LRC.</param>
+            <param name="encode">Define si el calculo del LRC es para un nuevo mensaje o una respuesta de mensaje.</param>
+            <returns>LRC.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command.PrintLog(System.String,System.String)">
+            <summary>
+            Imprime el comando en el Log.
+            </summary>
+            <param name="sKey">Nombre del argumento.</param>
+            <param name="sValue">Valor del argumento.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.CommandFactory">
+            <summary>
+            Clase que genera los comando soportados por el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.CommandFactory.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.CommandFactory.GetCommand(System.String)">
+            <summary>
+            Función que obtiene el comando a ejecutar a través de su clave.
+            </summary>
+            <param name="sCommandName">Clave del comando a ejecutar.</param>
+            <returns>Comando a ejecutar.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ComplexCommand">
+            <summary>
+            Implementación para comando de requerimiento con respuesta
+             </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ComplexCommand.IsValid(System.Byte[])">
+            <summary>
+            Verifica que un arreglo de bytes contenga la estructura de un comando de respuesta.
+            </summary>
+            <param name="command"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ComplexCommand.UseTimeout">
+            <summary>
+            Indica si el comando utiliza timeout en la respuesta, es decir, se esperaá comando de
+            respuesta durante el tiempo especificado por el comando enviado.
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ComplexCommand.Decode(System.Byte[])">
+            <summary>
+            Decodifica la respuesta al comando de requerimiento
+             </summary>
+             <param name="command">respuesta al comando de requerimiento</param>
+             <returns>Objeto en el contexto del comando de requerimiento</returns>
+             <exception cref="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidLrcException"></exception>
+             <exception cref="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCommandException"></exception>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.InfoCommand">
+            <summary>
+            Comando para recuperar información del PIN Pad
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.OpenSessionCommand">
+            <summary>
+            Comando para abrir sesión de operador en el Pin Pad
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ReadCardCommand">
+            <summary>
+            Comando para solicitar la lectura de tarjeta al Pin Pad
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ReadKeysCommand">
+            <summary>
+            Comando para solicitar llaves del Pin Pad
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ReadPanCommand">
+            <summary>
+            Comando para solicitar el Pan de la tarjeta al Pin Pad (comando Z4)
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ReadPanCommand.Initialize">
+            <summary>
+            Inicializa el comando, este método es llamado en
+            la ejecución del método<code>Encode</code>
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ReadPanCommand.IsValid(System.Byte[])">
+            <summary>
+            Verifica que un arreglo de bytes contenga la estructura de un comando de respuesta.
+            </summary>
+            <param name="r"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.ReadSessionCommand">
+            <summary>
+            Comando para recuperar la sesión de operador actual
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.RemoveCardCommand">
+            <summary>
+            Comando para solicitar el retiro de la tarjeta del Pin Pad y/o enviar
+            sincronización final
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.SaveTextCommand">
+            <summary>
+            Comando para guardar textto en la memoria del Pin Pad,
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.UpdateBinesCommand">
+            <summary>
+            Bines de Excepción
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.UpdateCommand">
+            <summary>
+            Telecarga
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.UpdateKeysCommand">
+            <summary>
+            Carga de Llaves
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection">
+            <summary>
+            Interfaz que expone los métodos que ejecuta la conexión.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.Open">
+            <summary>
+            Abre puerto.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.IsOpened">
+            <summary>
+            Determina si está abierto o cerrado el puerto.
+            </summary>
+            <returns>Estado del puerto.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.Close">
+            <summary>
+            Cierra el puerto.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.WriteByte(System.Byte)">
+            <summary>
+            Escribe un byte al puerto.
+            </summary>
+            <param name="b">Byte a escribir.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.WriteBytes(System.Byte[])">
+            <summary>
+            Escribe un arreglo de bytes al puerto.
+            </summary>
+            <param name="m">Arreglo de bytes a escribir.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.ReadByte">
+            <summary>
+            Lee un byte del puerto.
+            </summary>
+            <returns>Byte obtenido del puerto.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection.ReadBytes">
+            <summary>
+            Lee un arreglo de bytes del puerto.
+            </summary>
+            <returns>Arreglo de bytes obtenido del puerto.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CancelOperationException">
+            <summary>
+            Excepción lanzada cuando no se cancela en el pinpad una operación de lectura de tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CancelOperationException.#ctor">
+            <summary>
+            Crea una instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CardReadingException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error al leer los datos de la tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CardReadingException.#ctor">
+            <summary>
+            Crea una nueva instacia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvBlockedCardException">
+            <summary>
+            Excepción lanzada cuando la tarjeta se encuentra bloqueada.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvBlockedCardException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvChipFailureException">
+            <summary>
+            Excepción lanzada cuando el chip de la tarjeta se encuentra dañado.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvChipFailureException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException">
+            <summary>
+            Excepción lanzada por validación de datos EMV de la tarjeta
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.Emvs">
+            <summary>
+            Devuelve lista de EMVs de la tarjeta.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.ChipCard">
+            <summary>
+            Devuelve instancia de la tarjeta leída.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.#ctor(System.String,EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+            <param name="chipCard">Datos de la tarjeta.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.#ctor(System.String,EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv[])">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+            <param name="emvs">Emv de la tarjeta.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvException.#ctor(System.String,EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ChipCard,EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv[])">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+            <param name="chipCard">Datos de la tarjeta.</param>
+            <param name="emvs">Emv de la tarjeta.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvOfflineException">
+            <summary>
+            Excepción lanzada cuando ocurre una autorización Offline.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EmvOfflineException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EncryptionCommandException">
+            <summary>
+            Excepción lanzada cuando se mandan datos incorrectos para hacer el cifrado en el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EncryptionCommandException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.EncryptionCommandException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.ExpiredCardException">
+            <summary>
+            Excepción lanzada cuando la tarjeta leída está expirada.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.ExpiredCardException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CardNotMatchException">
+            <summary>
+            Excepción lanzada cuando la tarjeta no coincide con la lectura original.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CardNotMatchException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.CardNotMatchException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidStatusException">
+            <summary>
+            Excepción lanzada cuando los datos de tarjeta son inválidos
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidStatusException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidStatusException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidDateException">
+            <summary>
+            Excepción lanzada cuando los datos de tarjeta son inválidos
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidDateException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidDateException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidOperatorCardException">
+            <summary>
+            Excepción lanzada cuando los datos de tarjeta son inválidos
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidOperatorCardException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidOperatorCardException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidApplicationException">
+            <summary>
+            Excepción lanzada cuando los datos de tarjeta son inválidos
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidApplicationException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidApplicationException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidMessageException">
+            <summary>
+            Excepción lanzada cuando los datos de tarjeta son inválidos
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidMessageException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidMessageException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCardException">
+            <summary>
+            Excepción lanzada cuando los datos de tarjeta son inválidos
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCardException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCardException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCommandException">
+            <summary>
+            Excepción lanzada cuando el Pin Pad no reconoce el comando enviado.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCommandException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidCommandException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidFormatDataException">
+            <summary>
+            Excepción lanzada cuando no se cancela en el pinpad una operación de lectura de tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidFormatDataException.#ctor">
+            <summary>
+            Crea una instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidLrcException">
+            <summary>
+            Excepción lanzada cuando el LRC del comando de respuesta no coincide con el calculado en la respuesta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.InvalidLrcException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.KeysException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error al intentar recuperar o establecer las llaves del Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.KeysException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.KeysNotFoundException">
+            <summary>
+            Excepción lanzada cuando no se se esperan llaves del Pin Pad y éstas no se encuentran.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.KeysNotFoundException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.NotFoundFieldException">
+            <summary>
+            Excepción lanzada cuando el campo especificado no se encuentra en la respuesta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.NotFoundFieldException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadConnectionException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error durante la comunicación con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadConnectionException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadConnectionTimeoutException">
+            <summary>
+            Excepción lanzada cuando se consume el tiempo máximo de espera de byte(s) del Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadConnectionTimeoutException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadConnectionTimeoutException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadException">
+            <summary>
+            Excepciún lanzada cuando ocurre algún error al comunicarse con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.PinPadException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.RemovedCardException">
+            <summary>
+            Excepción lanzada cuando la tarjeta es removida antes de ser procesada.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.RemovedCardException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.ScriptExecutionException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error al ejecutar scripts en la tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.ScriptExecutionException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.ScriptPreparingException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error al preparar scripts en la tarjeta.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.ScriptPreparingException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.SessionException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error al intentar abrir/cerrar u obtener la sesión de operador.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.SessionException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.TimeOutException">
+            <summary>
+            Excepción lanzada cuando el tiempo máximo de espera de respuesta es alcanzado.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.TimeOutException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.UnsupportedCardException">
+            <summary>
+            Excepción lanzada cuando la tarjeta leída no es soportada por la aplicación.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.UnsupportedCardException.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.UpdateBinesException">
+            <summary>
+            Excepción lanzada cuando ocurre algún error al actulizar la tabla de bines del Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.UpdateBinesException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.UpdateException">
+            <summary>
+            Excepción lanzada cuando la versión del PIN Pad no es soportada por la aplicación.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.UpdateException.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="message">Mensaje a desplegar en la excepción.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad">
+            <summary>
+            Interfaz que expone las operaciones soportadas por el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Open">
+            <summary>
+            Abre la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Close">
+            <summary>
+            Cierra la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.IsOpened">
+            <summary>
+            Revisa si la conexión con el Pin Pad está abierta.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Cancel">
+            <summary>
+            Función que cancela la ejecución del comando actual en el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.ShowMessage(System.String)">
+            <summary>
+            Función que despliega un mensaje en la pantalla del dispositivo.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.SaveText(System.String)">
+            <summary>
+            Función que guarda un texto en la memoria del dispositivo.
+            </summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.ReadPan">
+            <summary>
+            Función para obtener el número de tarjeta (PAN).
+            </summary>
+            <returns>Número de la tarjeta.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.ReadBin(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest)">
+            <summary>
+            Función para obtener los primeros 6 digios de la tarjeta (Bin).
+            </summary>
+            <param name="cardRequest">Información requerida para ejecutar el comando.</param>
+            <returns>Bin de la tarjeta.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.ReadCard(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest)">
+            <summary>
+            Funcion que obtiene los datos de la tarjeta.
+            </summary>
+            <param name="cardRequest">Información requeriada para ejecutar el comando.</param>
+            <returns>Información de la tarjeta.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.ReadPinPadCC(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest)">
+            <summary>
+            Función que encripta los datos de una transacción de corresponsalía cuyo pago será en efectivo.
+            </summary>
+            <param name="correspondentsRequest">Información a encriptar.</param>
+            <returns>Información encriptada.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Update(System.String)">
+            <summary>
+            Función para ejecutar una telecarga.
+            </summary>
+            <param name="sFilePath">Ruta donde se encuentra almacenado el archivo de telecarga.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.SetKeys(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys)">
+            <summary>
+            Función para cargar nuevas llaves al Pin Pad.
+            </summary>
+            <param name="keys">Llave a cargar.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.GetKeys">
+            <summary>
+            Función para obtener la llave del Pin Pad.
+            </summary>
+            <returns>Llave cargada.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.GetInfo">
+            <summary>
+            Comando para obtener información a cerca del Pin Pad.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.FinalSynchronization">
+            <summary>
+            Función que termina la transacción en curso en el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.FinalSynchronization(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization)">
+            <summary>
+            Función que termina la transacción financiera en curso.
+            </summary>
+            <param name="cardAuthorization">Información de la transacción para finalizar la transacción.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Synchronize(System.String,System.String)">
+            <summary>
+            Función para ejecutar la sincronización inicial en el Pin Pad.
+            </summary>
+            <param name="message">Mensaje a desplegar en la pantalla del dispositivo.</param>
+            <param name="text">Texto a almacenar en la memoria del dispositivo.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.UpdateBines(System.String)">
+            <summary>
+            Función que realiza la carga de bines de excepción.
+            </summary>
+            <param name="bines"></param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Print(System.String)">
+            <summary>
+            Función que envía un voucher a imprimir a la impresora del Pin Pad.
+            </summary>
+            <param name="parametros">Voucher a imprimir.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.IsConnected">
+            <summary>
+            Determina si el Pin Pad está conectado o no.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.OpenSession">
+            <summary>
+            Función que abre la sesíón de operador.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.CloseSession">
+            <summary>
+            Función que cierra la sesíón de operador.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.GetSession">
+            <summary>
+            Obtiene la sesión de operador.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.TimeOut">
+            <summary>
+            Obtiene y establece el valor del tiempo que se esperará la respuesta de los comandos ejecutados en el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.IPinPad.Contactless">
+            <summary>
+            Determina si se activará o no la lectura de tarjeta por contacto.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl">
+            <summary>
+            Clase que implementa las funcionalidades soportadas por el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.TimeOut">
+            <summary>
+            Tiempo de espera para la lectuta y escritura de los comandos del Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Contactless">
+            <summary>
+            Indica si se activará o no la lectura de tarjeta por contacto.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.PinPadConnection">
+            <summary>
+            Tipo de conexión a utilizar para la comunicación con el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.CommandFactory">
+            <summary>
+            Comando a ejecutar.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.#ctor(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Connection.IPinPadConnection)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="pinpadConnection">Tipo de conexión a utilizar para la comunicación con el Pin Pad.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Open">
+            <summary>
+            Abre la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Close">
+            <summary>
+            Cierra la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.IsOpened">
+            <summary>
+            Determina el estado de la conexión del Pin Pad.
+            </summary>
+            <returns>Abierto/Cerrado.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.ReadPan">
+            <summary>
+            Función para obtener el número de la tarjeta (PAN). (Comando Z4).
+            </summary>
+            <returns>Número de tarjeta.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.ReadBin(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest)">
+            <summary>
+            Función que obtiene los primeros 6 digitos de la tarjeta (Bin). (Comando C50).
+            </summary>
+            <param name="cardRequest">Parámetros para la ejecución del comando.</param>
+            <returns>Bin de la tarjeta.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.ReadCard(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.CardRequest)">
+            <summary>
+            Función para leer los datos de la tarjeta ingresada. (Comando C51).
+            </summary>
+            <param name="cardRequest">Parámetros para la ejecución del comando.</param>
+            <returns>Tipo de tarjeta leída por el Pin Pad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Update(System.String)">
+            <summary>
+            Comando para ejecutar una telecarga. (Comando Q7).
+            </summary>
+            <param name="sFilePath">Ruta donde se encuentra el archivo de actualización del Pin Pad.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.SetKeys(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys)">
+            <summary>
+            Función para cargar la nueva llave al Pin Pad. (Comando Z11).
+            </summary>
+            <param name="keys">Llave que se cargará al Pin Pad.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.GetKeys">
+            <summary>
+            Función que obtiene la llave cargada en el Pin Pad. (Comando Z10).
+            </summary>
+            <returns>Llave cargada en el Pin Pad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.GetInfo">
+            <summary>
+            Función que obtiene información sobre el Pin Pad. (Comando Q8).
+            </summary>
+            <returns>Información del Pin Pad.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.FinalSynchronization">
+            <summary>
+            Ejecuta la finalización del comando en curso en el Pin Pad. (Comando C54).
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.FinalSynchronization(System.String)">
+            <summary>
+            Ejecuta la finalización del comando en curso en el Pin Pad. (Comando C54).
+            </summary>
+            <param name="entryMode">Manera en que la tarjeta fue leída por el PinPad</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.FinalSynchronization(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.ICardAuthorization)">
+            <summary>
+            Ejecuta la finalización del comando en curso en el Pin Pad. (Comando C54).
+            </summary>
+            <param name="cardAuthorization">Datos para finalizar la transacción financiera en curso.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.ExecuteScripts(System.String)">
+            <summary>
+            Función que ejecuta el comando proporcionado en el chip de la tarjeta.
+            </summary>
+            <param name="idScript">Script que se ejecutará en el chip de la tarjeta.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.InitScripts(System.Collections.Generic.List{EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script})">
+            <summary>
+            Función que obtiene los scripts a ejecutar.
+            </summary>
+            <param name="scripts">Lista de scripts a ejecutar.</param>
+            <returns>Id del script a ejecutar.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.SortScripts(System.Collections.Generic.List{EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script})">
+            <summary>
+            Función que ordena los escripts que se ejecutarán.
+            </summary>
+            <param name="scripts">Lista de escripts.</param>
+            <returns>Lista de scripts.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Synchronize(System.String,System.String)">
+            <summary>
+            Función que ejecuta la sincrinización inicial.
+            </summary>
+            <param name="sMessageToDisplay">Mensaje a desplegar en la pantalla del Pin Pad.</param>
+            <param name="sText">Texto que se desea almacenar en la memoria del Pin Pad.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Cancel">
+            <summary>
+            Función que cancela la función en curso ejecutándose en el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.ShowMessage(System.String)">
+            <summary>
+            Función que ingresa el mensaje a mostrar en la pantalla del dispositivo.
+            </summary>
+            <param name="sMessage">Mensaje a mostrar en la pantalla del dispositivo.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.SaveText(System.String)">
+            <summary>
+            Función que almacena un texto en la memoria del dispositivo.
+            </summary>
+            <param name="sText">Texto que se desea almacenar.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.UpdateBines(System.String)">
+            <summary>
+            Función que se utiliza para actualizar la tabla de bines de excepción en el dispositivo.
+            </summary>
+            <param name="sBines">Tabla de bines de excepción.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Print(System.String)">
+            <summary>
+            Función para impresión de vouchers en la impresora del dispositivo.
+            </summary>
+            <param name="parametros">Voucher a imprimir.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.IsConnected">
+            <summary>
+            Función que verifica si el dispositivo se encuentra conectado.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.OpenSession">
+            <summary>
+            Función para abrir sesión de operador.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.CloseSession">
+            <summary>
+            Función para cerrar sesión de operador.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.GetSession">
+            <summary>
+            Función para obtener la sesión del operador.
+            </summary>
+            <returns>Sesión del operador.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.ReadPinPadCC(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Card.EncryptionCorrespondentsRequest)">
+            <summary>
+            Función que encripta los datos de una transacción de corresponsalía en eefctivo.
+            </summary>
+            <param name="correspondentsRequest">Información de la transacción a encriptar.</param>
+            <returns>Información de la transacción cifrada.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadImpl.Execute(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command,System.Int32)">
+            <summary>
+            Ejecuta el comando en el Pin Pad.
+            </summary>
+            <param name="command">Comando a ejecutar.</param>
+            <param name="ackWaiting">Tiempo de espera de respuesta.</param>
+            <returns>Objeto devuelto según el comando.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadUsb">
+            <summary>
+            Clase para comunicarse con el Pin Pad a través de USB.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadUsb.#ctor(System.String,System.Int32)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="sPort">Puerto COM en el que se detecta el dispositivo.</param>
+            <param name="iTimeOut">Tiempo de espera del dispositivo.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadUsb.Open">
+            <summary>
+            Abre la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadUsb.Close">
+            <summary>
+            Cierra la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadUsb.IsOpened">
+            <summary>
+            Determina el estado de la conexión del Pin Pad.
+            </summary>
+            <returns>Abierto/Cerrado.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadUsb.Execute(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command,System.Int32)">
+            <summary>
+            Ejecuta el comando en el dispositivo.
+            </summary>
+            <param name="command">Comando a ejecutar.</param>
+            <param name="iAckWaiting">Tiempo de espera.</param>
+            <returns>Objeto según el comando.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadWiFi">
+            <summary>
+            Clase para comunicarse con el Pin Pad a través de WiFi.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadWiFi.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="sAddress">Dirección ip del dispositivo.</param>
+            <param name="iPort">Puerto en el que escucha el dispositivo.</param>
+            <param name="iTimeOut">Tiempo de espera del dispositivo.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadWiFi.Open">
+            <summary>
+            Abre la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadWiFi.Close">
+            <summary>
+            Cierra la conexión con el Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadWiFi.IsOpened">
+            <summary>
+            Determina el estado de la conexión del Pin Pad.
+            </summary>
+            <returns>Abierto/Cerrado.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.PinPadWiFi.Execute(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Command.Command,System.Int32)">
+            <summary>
+            Ejecuta el comando en el dispositivo.
+            </summary>
+            <param name="command">Comando a ejecutar.</param>
+            <param name="iAckWaiting">Tiempo de espera.</param>
+            <returns>Objeto según el comando.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Config">
+            <summary>
+            Clase de utilerías
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv">
+            <summary>
+            Implementación para EMV
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.Id">
+            <summary>
+            Obtiene el id del EMV.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.Tags">
+            <summary>
+            Obtiene o establece la lista de tags que componen al EMV.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del EMV.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.#ctor(System.String,System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del EMV.</param>
+            <param name="hexTagsContent">Contenido del EMV.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.AddTag(EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag)">
+            <summary>
+            Agrega un tag al EMV.
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.GetTag(System.String)">
+            <summary>
+            Obtiene un tag del EMV a través de su Id.
+            </summary>
+            <param name="sId">Id del tag.</param>
+            <returns>Tag indicado por el Id.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.Match(System.String,System.Int32)">
+            <summary>
+            Encuentra los tags de un EMV.
+            </summary>
+            <param name="sSource">Cadena que contiene el EMV</param>
+            <param name="iStart">Índice dónde inicia la búsqueda de tags EMV.</param>
+            <returns>Índice donde termina la búsqueda.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.DecodeEmvTags(System.String)">
+            <summary>
+            Obtiene los Tags de un EMV.
+            </summary>
+            <param name="stringEMVFull">Cadena EMV.</param>
+            <returns>Lista de tags que conforman  EMV.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.GetSize">
+            <summary>
+            Obtiene la longitud del EMV.
+            </summary>
+            <returns>Longitud del EMV.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.GetHexTagValue(System.String)">
+            <summary>
+            Obtiene el valor de un tag a través de su Id.
+            </summary>
+            <param name="sId">Id del tag que se desea obtener el contenido.</param>
+            <returns>Valor del tag.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.GetHexTagsContent">
+            <summary>
+            Genera una cadena EMV a partir de los tag que lo conforman.
+            </summary>
+            <returns>Cadena EMV.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Emv.ContainsTag(System.String)">
+            <summary>
+            Determina si un tag existe o no.
+            </summary>
+            <param name="sId">Id del tag a comprobar.</param>
+            <returns>Si existe  o no el tag.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script">
+            <summary>
+            Clase para manejar los scripts que se ejecutan en la tarjeta.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.MAX_LENGTH">
+            <summary>
+            Longitud máxima de un script.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.Id">
+            <summary>
+            Identificador del script.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.HexValue">
+            <summary>
+            Valor hexadecimal del script.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.SecondPart">
+            <summary>
+            Indica si el escript tiene una segunda parte o no.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.#ctor(System.String,System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del script.</param>
+            <param name="hexValue">Valor del script en hexadecimal.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.GetSize">
+            <summary>
+            Obtiene la longitud del script.
+            </summary>
+            <returns>Longitud del script.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.GetFirstPart">
+            <summary>
+            Obtiene la primera parte del script.
+            </summary>
+            <returns>Primera parte del script.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Script.GetSecondPart">
+            <summary>
+            Obtiene la segunda parte del script.
+            </summary>
+            <returns>Segunda parte del script.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag">
+            <summary>
+             Implementación de Tag.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.Id">
+            <summary>
+            Id del tag.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.HexValue">
+            <summary>
+            Valor en hexadecimal del tag.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del tag.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.#ctor(System.String,System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del tag.</param>
+            <param name="hexValue">Valor del tag en hexadecimal.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.GetSize">
+            <summary>
+            Obtiene la longitud del tag.
+            </summary>
+            <returns>Longitud del tag.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.IsHexByteEquals(System.Int32,System.String)">
+            <summary>
+            Compara un valor hexadecimal.
+            </summary>
+            <param name="index">Índice del tag.</param>
+            <param name="hexValue">Valor a comparar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.EMVCo.Tag.ToString">
+            <summary>
+            Obtiene el tag en string.
+            </summary>
+            <returns>Cadena del tag.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.IField">
+            <summary>
+            Interfaz para campos de respuesta a comandos.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.IField.Id">
+            <summary>
+             Devuelve el identificador del campo.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.IField.Match(System.String,System.Int32)">
+            <summary>
+            Realiza la búsqueda del campo en la fuente especificada.
+            </summary>
+            <param name="source">Fuente en la que se desea buscar el campo.</param>
+            <param name="start">Índice de inicio de la búsqueda.</param>
+            <returns>Índice en el que se encontró el final del campo.</returns>
+            <exception cref="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Exception.NotFoundFieldException">Excepción si el campo no se encientra en la fuente especificada,</exception>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info">
+            <summary>
+            Implementación para información de Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info.Model">
+            <summary>
+            Modelo del  Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info.Version">
+            <summary>
+            Versión del Software instalado en el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info.Update">
+            <summary>
+            Actualización de la version del Software instalado
+            en el Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info.SerialNumber">
+            <summary>
+            Obtiene el número de serie del Pin Pad.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Info.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="model">Modelo del Pin Pad.</param>
+            <param name="version">Versión del software del Pin Pad.</param>
+            <param name="update">Actualización del Pin Pad.</param>
+            <param name="sSerialNumber">Número de serie del Pin Pad.</param>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.ISession">
+            <summary>
+            Interfaz para sesión de operador.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.ISession.OperatorCard">
+            <summary>
+            Obtiene o establece el valor de la tarjeta de operador.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys">
+            <summary>
+            Implementación para llaves de Pin Pad.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys.Tokens">
+            <summary>
+            Referencia a Tokens.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys.#ctor(System.Collections.Generic.List{EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token})">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="tokens">Lista de Tokens.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Keys.GetToken(System.String)">
+            <summary>
+            Obtiene un token por su Id.
+            </summary>
+            <param name="sTokenId">Id del token que se desea obtener.</param>
+            <returns>Token seleccionado.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Session">
+            <summary>
+            Implementación para la sesión de operador.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Session.OperatorCard">
+            <summary>
+            Obtiene o establece el valor de la tarjeta de operador.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Session.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token">
+            <summary>
+            Implementación para Token.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.Id">
+            <summary>
+            Id del token.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.Fields">
+            <summary>
+            Campos que conforman el token.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.#ctor(System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del token.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.#ctor(System.String,System.Char)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id el token.</param>
+            <param name="additionalId">Id adicional.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.#ctor(System.String,System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del Token.</param>
+            <param name="sFieldsHexValue">Valor del tokeb en hexadecimal.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.GetSize">
+            <summary>
+            Obtiene la longitud de un token.
+            </summary>
+            <returns>Valor de la longitud del token.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.GetFieldHexValue(System.String)">
+            <summary>
+            Obtiene el valor de un token.
+            </summary>
+            <param name="sId">Id del token del que se desea obtener su valor.</param>
+            <returns>Valor del token en hexadecimal.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.GetFieldsHexValue">
+            <summary>
+            Obtiene los campos del Token.
+            </summary>
+            <returns>Valor del token en hexadecimal.</returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.Match(System.String,System.Int32)">
+            <summary>
+            Obtiene el desglose de un token.
+            </summary>
+            <param name="source">Cadena fuente de los tokens.</param>
+            <param name="start">Índice donde se inicia la búsqueda de tokens.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.Token.GetHexValue">
+            <summary>
+            Obtiene el valor en hexadecimal de un token.
+            </summary>
+            <returns>Cadena con el token en hexadecimal</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField">
+            <summary>
+            Implementación para campo de token
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.Size">
+            <summary>
+            Obtiene la longitud del Token.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.Id">
+            <summary>
+            Obtiene el Id del token.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.Value">
+            <summary>
+            Obtiene el valor del token.
+            </summary>
+        </member>
+        <member name="P:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.Description">
+            <summary>
+            Obtiene la descripción del Token.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.#ctor">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Crea una nueva instancia de la clase.
+            </summary>
+            <param name="id">Id del token.</param>
+            <param name="size">Longitud del token.</param>
+            <param name="description">Descripción del token.</param>
+        </member>
+        <member name="M:EGlobal.TotalPosSDKNet.JPinPad.PinPad.Util.TokenField.Load(System.String)">
+            <summary>
+            Obtiene la estructura del token indicado.
+            </summary>
+            <param name="id">Id del token.</param>
+            <returns>Estructura del tolen indicado por el Id.</returns>
+        </member>
+        <member name="T:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts">
+            <summary>
+            Constantes requeridas para comunicación con Pin Pad.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts.STX">
+            <summary>
+            Indica el inicio de un comando.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts.ETX">
+            <summary>
+            Indica el fin de un comando.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts.EOT">
+            <summary>
+            Indica el fin de la comunicación en cualquiera de las partes
+            involucradas.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts.ENQ">
+            <summary>
+            Byte de control para reconocimiento de dispositivo.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts.ACK">
+            <summary>
+            Inidca que el mensaje se ha recibido satisfactoriamente.
+            </summary>
+        </member>
+        <member name="F:EGlobal.TotalPosSDKNet.JPinPad.Util.Consts.NAK">
+            <summary>
+            Byte de controlindica que un comando no se ha recibido correctamente.
+            </summary>
+        </member>
+    </members>
+</doc>

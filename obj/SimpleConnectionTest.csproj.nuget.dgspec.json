@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\OneDrive - Universidad Autonoma de Campeche\\Documents\\api_terminal_bbva\\SimpleConnectionTest.csproj": {}
+  },
+  "projects": {
+    "E:\\OneDrive - Universidad Autonoma de Campeche\\Documents\\api_terminal_bbva\\SimpleConnectionTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive - Universidad Autonoma de Campeche\\Documents\\api_terminal_bbva\\SimpleConnectionTest.csproj",
+        "projectName": "SimpleConnectionTest",
+        "projectPath": "E:\\OneDrive - Universidad Autonoma de Campeche\\Documents\\api_terminal_bbva\\SimpleConnectionTest.csproj",
+        "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
+        "outputPath": "E:\\OneDrive - Universidad Autonoma de Campeche\\Documents\\api_terminal_bbva\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
