@@ -1,0 +1,17 @@
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.csproj.AssemblyReference.cache
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.GeneratedMSBuildEditorConfig.editorconfig
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.AssemblyInfoInputs.cache
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.AssemblyInfo.cs
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.csproj.CoreCompileInputs.cache
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\pinpad.config
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\com.eglobal.interfaz.cer
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\TotalPosApi.exe.config
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\TotalPosApi.exe
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\TotalPosApi.pdb
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\Newtonsoft.Json.dll
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\EGlobal.TotalPosSDKNet.dll
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPos.7A781D6E.Up2Date
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.exe
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\obj\Debug\net48\TotalPosApi.pdb
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\corresponsales.config
+E:\OneDrive - Universidad Autonoma de Campeche\Documents\api_bbva\src\TotalPosApi\bin\Debug\net48\bines_20210520181704.config
